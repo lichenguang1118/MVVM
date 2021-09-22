@@ -30,4 +30,8 @@ class SplashFragment : BaseFragment<SplashFragmentViewModel, FragmentSplashBindi
             Navigation.findNavController(binding.root).navigate(R.id.action_splashFragment_to_loginFragment)
         }
     }
+
+    override fun addListener() {
+
+    }
 }

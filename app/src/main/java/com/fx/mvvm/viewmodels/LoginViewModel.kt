@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 
  */
 class LoginViewModel(
-    private val repository: LoginRepository
+//    private val repository: LoginRepository
 ) : BaseViewModel() {
 
     private val _loginResponse :MutableLiveData<Resource<BaseResponse>> = MutableLiveData()
@@ -33,7 +33,7 @@ class LoginViewModel(
 
     suspend fun login(){
         viewModelScope.launch {
-            _loginResponse.value = repository.checkUser(idNumber.toString())
+//            _loginResponse.value = repository.checkUser(idNumber.toString())
         }
     }
 

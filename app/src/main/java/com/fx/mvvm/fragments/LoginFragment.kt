@@ -22,10 +22,10 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
 
     override val layoutResId: Int = R.layout.fragment_login
 
-
     override fun initObserve() {
 
         viewModel.run {
+
             idNumber.observe(this@LoginFragment, {
                 viewModel.valid.postValue(StringUtil.isIDCard(it))
             })
