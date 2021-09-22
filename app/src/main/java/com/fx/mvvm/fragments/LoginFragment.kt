@@ -1,36 +1,53 @@
 package com.fx.mvvm.fragments
 
-import android.os.Bundle
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import com.fx.common.util.StringUtil
 import com.fx.mvvm.R
+import com.fx.mvvm.base.BaseFragment
 import com.fx.mvvm.databinding.FragmentLoginBinding
+import com.fx.mvvm.network.Resource
+import com.fx.mvvm.viewmodels.LoginViewModel
 
 /**
  * A simple [Fragment] subclass.
  * Use the [LoginFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class LoginFragment : Fragment() {
+class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
 
-    private lateinit var binding: FragmentLoginBinding
+    override val viewModel: LoginViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        binding = FragmentLoginBinding.inflate(inflater,container,false)
-        return binding.root
+    override val layoutResId: Int = R.layout.fragment_login
+
+
+    override fun initObserve() {
+
+        viewModel.run {
+            idNumber.observe(this@LoginFragment, {
+                viewModel.valid.postValue(StringUtil.isIDCard(it))
+            })
+
+            loginResponse.observe(this@LoginFragment,{
+                when (it) {
+                    is Resource.Success -> {
+                        Toast.makeText(requireContext(), it.toString(), Toast.LENGTH_SHORT).show()
+                    }
+                    is Resource.Failure ->{
+                        Toast.makeText(requireContext(), it.errorBody.toString(), Toast.LENGTH_SHORT).show()
+                    }
+                }
+            })
+        }
+
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun addListener() {
         binding.ivFaceAuthentication.setOnClickListener {
-            Navigation.findNavController(binding.ivFaceAuthentication).navigate(R.id.action_loginFragment_to_mainFragment)
+            Navigation.findNavController(binding.root)
+                .navigate(R.id.action_loginFragment_to_mainFragment)
         }
     }
 
