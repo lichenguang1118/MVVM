@@ -1,4 +1,4 @@
-package com.fx.mvvm.fragments
+package com.fx.mvvm.ui
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels

@@ -4,10 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.fx.mvvm.base.BaseViewModel
-import com.fx.mvvm.network.Resource
-import com.fx.mvvm.repository.LoginRepository
-import com.fx.mvvm.responses.BaseResponse
+import com.fx.mvvm.data.network.Resource
+import com.fx.mvvm.data.repository.LoginRepository
+import com.fx.mvvm.data.responses.BaseResponse
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
 
@@ -18,8 +20,9 @@ import kotlinx.coroutines.launch
  * @Description : LoginViewModel
 
  */
-class LoginViewModel(
-//    private val repository: LoginRepository
+@HiltViewModel
+class LoginViewModel @Inject constructor(
+    private val repository: LoginRepository
 ) : BaseViewModel() {
 
     private val _loginResponse :MutableLiveData<Resource<BaseResponse>> = MutableLiveData()
@@ -31,9 +34,9 @@ class LoginViewModel(
 
     val showProgressBar: MutableLiveData<Boolean> = MutableLiveData(false)
 
-    suspend fun login(){
+    fun checkUser(){
         viewModelScope.launch {
-//            _loginResponse.value = repository.checkUser(idNumber.toString())
+            _loginResponse.value = repository.checkUser(idNumber.toString())
         }
     }
 

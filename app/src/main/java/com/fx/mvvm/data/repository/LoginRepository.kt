@@ -1,6 +1,7 @@
-package com.fx.mvvm.repository
+package com.fx.mvvm.data.repository
 
-import com.fx.mvvm.network.Api
+import com.fx.mvvm.data.network.LoginApi
+import javax.inject.Inject
 
 /**
 
@@ -11,8 +12,8 @@ import com.fx.mvvm.network.Api
  * @Description : LoginRepository
 
  */
-class LoginRepository(
-    private val api: Api
+class LoginRepository @Inject constructor(
+    private val api: LoginApi
 ) : BaseRepository() {
 
     suspend fun checkUser(

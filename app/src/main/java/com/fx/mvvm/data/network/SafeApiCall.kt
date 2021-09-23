@@ -1,21 +1,10 @@
-package com.fx.mvvm.repository
+package com.fx.mvvm.data.network
 
-import com.fx.mvvm.network.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 
-/**
-
- * @Author : chenguang
-
- * @Time : On 2021/9/22 0022 15:11
-
- * @Description : BaseRepository
-
- */
-abstract class BaseRepository {
-
+interface SafeApiCall {
     suspend fun <T> safeApiCall(
         apiCall: suspend () -> T
     ): Resource<T> {
@@ -28,11 +17,10 @@ abstract class BaseRepository {
                         Resource.Failure(false, throwable.code(), throwable.response()?.errorBody())
                     }
                     else -> {
-                        Resource.Failure(true,  null, null)
+                        Resource.Failure(true, null, null)
                     }
                 }
             }
         }
     }
-
 }

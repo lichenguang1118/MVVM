@@ -1,4 +1,4 @@
-package com.fx.mvvm.responses
+package com.fx.mvvm.data.responses
 
 /**
 

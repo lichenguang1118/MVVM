@@ -1,8 +1,8 @@
-package com.fx.mvvm.application
+package com.fx.mvvm
 
 import android.app.Application
 import com.fx.common.util.LogUtil
-import com.fx.mvvm.BuildConfig
+import dagger.hilt.android.HiltAndroidApp
 
 /**
 
@@ -13,7 +13,8 @@ import com.fx.mvvm.BuildConfig
  * @Description : BaseApplication
 
  */
-class BaseApplication : Application() {
+@HiltAndroidApp
+class MyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()

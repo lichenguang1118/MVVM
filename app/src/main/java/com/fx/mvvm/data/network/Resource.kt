@@ -1,4 +1,4 @@
-package com.fx.mvvm.network
+package com.fx.mvvm.data.network
 
 import okhttp3.ResponseBody
 
@@ -19,6 +19,8 @@ sealed class Resource<out T> {
         val isNetworkError: Boolean,
         val errorCode: Int?,
         val errorBody: ResponseBody?
-    ) :Resource<Nothing>()
+    ) : Resource<Nothing>()
+
+    object Loading : Resource<Nothing>()
 
 }
