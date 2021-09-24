@@ -1,6 +1,9 @@
 package com.fx.mvvm.data.repository
 
 import com.fx.mvvm.data.network.LoginApi
+import dagger.hilt.android.AndroidEntryPoint
+import okhttp3.RequestBody
+import javax.inject.Inject
 
 /**
 
@@ -11,7 +14,7 @@ import com.fx.mvvm.data.network.LoginApi
  * @Description : LoginRepository
 
  */
-class LoginRepository(
+class LoginRepository @Inject constructor(
     private val api: LoginApi
 ) : BaseRepository() {
 
@@ -19,6 +22,12 @@ class LoginRepository(
         sfzh: String
     ) = safeApiCall {
         api.checkUser(sfzh)
+    }
+
+    suspend fun getUserToken(
+        requestBody: RequestBody
+    ) = safeApiCall {
+        api.getUserToken(requestBody)
     }
 
 }

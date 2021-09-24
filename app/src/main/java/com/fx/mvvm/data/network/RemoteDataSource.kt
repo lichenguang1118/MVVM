@@ -5,6 +5,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 
 /**
 
@@ -15,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  * @Description : RemoteDataSource
 
  */
-class RemoteDataSource {
+class RemoteDataSource @Inject constructor(){
 
     companion object{
         private const val BASE_URL = "http://dev.hijz.faxuanyun.com"

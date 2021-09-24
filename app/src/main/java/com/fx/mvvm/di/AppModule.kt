@@ -32,4 +32,10 @@ object AppModule {
     fun provideLoginRepository(loginApi: LoginApi): LoginRepository {
         return LoginRepository(loginApi)
     }
+
+    @Singleton
+    @Provides
+    fun provideLoginApi(remoteDataSource: RemoteDataSource):LoginApi{
+        return remoteDataSource.buildApi(LoginApi::class.java)
+    }
 }

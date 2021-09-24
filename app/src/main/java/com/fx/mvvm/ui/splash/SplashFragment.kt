@@ -1,4 +1,4 @@
-package com.fx.mvvm.ui
+package com.fx.mvvm.ui.splash
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -6,9 +6,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import com.fx.mvvm.R
 import com.fx.mvvm.base.BaseFragment
+import com.fx.mvvm.constants.SpConstants
 import com.fx.mvvm.databinding.FragmentSplashBinding
-import com.fx.mvvm.viewmodels.SplashFragmentViewModel
+import com.fx.mvvm.util.SpUtil
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 /**
@@ -24,13 +26,14 @@ class SplashFragment : BaseFragment<SplashFragmentViewModel, FragmentSplashBindi
     override val layoutResId: Int = R.layout.fragment_splash
 
     override fun initObserve() {
-        lifecycleScope.launchWhenResumed {
+        lifecycleScope.launch {
             delay(2000L)
-            Navigation.findNavController(binding.root).navigate(R.id.action_splashFragment_to_loginFragment)
+            if (SpUtil.getString(SpConstants.TOKEN)!=null) {
+                Navigation.findNavController(binding.root).navigate(R.id.action_splashFragment_to_mainFragment)
+            }else{
+                Navigation.findNavController(binding.root).navigate(R.id.action_splashFragment_to_loginFragment)
+            }
         }
     }
 
-    override fun addListener() {
-
-    }
 }

@@ -1,7 +1,9 @@
 package com.fx.mvvm
 
 import android.app.Application
-import com.fx.common.util.LogUtil
+import com.fx.mvvm.util.LogUtil
+import com.tencent.mmkv.MMKV
+import dagger.hilt.android.HiltAndroidApp
 
 /**
 
@@ -12,10 +14,12 @@ import com.fx.common.util.LogUtil
  * @Description : BaseApplication
 
  */
+@HiltAndroidApp
 class MyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        MMKV.initialize(this)
         LogUtil.isDebug = BuildConfig.DEBUG
     }
 }

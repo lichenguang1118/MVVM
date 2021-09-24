@@ -5,7 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.fx.mvvm.R
+import com.fx.mvvm.base.BaseFragment
+import com.fx.mvvm.databinding.FragmentHomeBinding
+import com.fx.mvvm.ui.main.home.HomeViewModel
 
 
 /**
@@ -13,15 +17,12 @@ import com.fx.mvvm.R
  * Use the [HomeFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment<HomeViewModel,FragmentHomeBinding>() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
-    }
+    override val layoutResId: Int = R.layout.fragment_home
+
+    override val viewModel: HomeViewModel by viewModels()
+
 
 
 }

@@ -1,4 +1,4 @@
-package com.fx.mvvm.viewmodels
+package com.fx.mvvm.ui.splash
 
 import com.fx.mvvm.base.BaseViewModel
 

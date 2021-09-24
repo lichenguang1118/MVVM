@@ -13,4 +13,7 @@ package com.fx.mvvm.data.network
 object Url {
     //校验身份证号接口
     const val CHECK_USER :String = "/zjyzjt/infoPerson/checkUser.do"
+
+    //获取用户token
+    const val GET_USER_TOKEN = "/zjyzjt/infoPerson/getUserToken.do"
 }

@@ -1,6 +1,9 @@
 package com.fx.mvvm.data.network
 
 import com.fx.mvvm.data.responses.BaseResponse
+import com.fx.mvvm.data.responses.TokenResponse
+import okhttp3.RequestBody
+import retrofit2.http.Body
 import retrofit2.http.POST
 import retrofit2.http.Query
 
@@ -17,5 +20,8 @@ interface LoginApi {
 
     @POST(Url.CHECK_USER)
     suspend fun checkUser(@Query("sfzh") sfzh: String): BaseResponse
+
+    @POST(Url.GET_USER_TOKEN)
+    suspend fun getUserToken(@Body body: RequestBody) :TokenResponse
 
 }

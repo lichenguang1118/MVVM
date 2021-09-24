@@ -1,4 +1,4 @@
-package com.fx.common.util
+package com.fx.mvvm.util
 
 import android.util.Log
 

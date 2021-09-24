@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.fx.mvvm.viewmodels.LoginViewModel" />
+            type="com.fx.mvvm.ui.login.LoginViewModel" />
 
         <import type="android.view.View"/>
     </data>
