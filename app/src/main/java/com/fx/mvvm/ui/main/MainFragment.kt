@@ -5,8 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import com.fx.mvvm.R
 import com.fx.mvvm.databinding.FragmentMainBinding
 
 
