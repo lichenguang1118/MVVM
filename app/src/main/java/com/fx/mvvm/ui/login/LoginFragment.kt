@@ -1,4 +1,4 @@
-package com.fx.mvvm.fragments
+package com.fx.mvvm.ui.login
 
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -8,7 +8,7 @@ import com.fx.common.util.StringUtil
 import com.fx.mvvm.R
 import com.fx.mvvm.base.BaseFragment
 import com.fx.mvvm.databinding.FragmentLoginBinding
-import com.fx.mvvm.network.Resource
+import com.fx.mvvm.data.network.Resource
 import com.fx.mvvm.viewmodels.LoginViewModel
 
 /**
@@ -30,13 +30,20 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
                 viewModel.valid.postValue(StringUtil.isIDCard(it))
             })
 
-            loginResponse.observe(this@LoginFragment,{
+            loginResponse.observe(this@LoginFragment, {
                 when (it) {
                     is Resource.Success -> {
-                        Toast.makeText(requireContext(), it.toString(), Toast.LENGTH_SHORT).show()
+                        if (it.value.data == true) {
+                            Navigation.findNavController(binding.root)
+                                .navigate(R.id.action_loginFragment_to_mainFragment)
+                        }
                     }
-                    is Resource.Failure ->{
-                        Toast.makeText(requireContext(), it.errorBody.toString(), Toast.LENGTH_SHORT).show()
+                    is Resource.Failure -> {
+                        Toast.makeText(
+                            requireContext(),
+                            it.errorBody.toString(),
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             })
@@ -46,8 +53,7 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
 
     override fun addListener() {
         binding.ivFaceAuthentication.setOnClickListener {
-            Navigation.findNavController(binding.root)
-                .navigate(R.id.action_loginFragment_to_mainFragment)
+            viewModel.login()
         }
     }
 

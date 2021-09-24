@@ -1,4 +1,4 @@
-package com.fx.mvvm.network
+package com.fx.mvvm.data.network
 
 import okhttp3.ResponseBody
 

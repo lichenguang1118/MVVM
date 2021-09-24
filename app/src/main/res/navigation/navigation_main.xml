@@ -7,22 +7,22 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.fx.mvvm.fragments.HomeFragment"
+        android:name="com.fx.mvvm.ui.main.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/serverFragment"
-        android:name="com.fx.mvvm.fragments.ServerFragment"
+        android:name="com.fx.mvvm.ui.main.ServerFragment"
         android:label="fragment_server"
         tools:layout="@layout/fragment_server" />
     <fragment
         android:id="@+id/applyFragment"
-        android:name="com.fx.mvvm.fragments.ApplyFragment"
+        android:name="com.fx.mvvm.ui.main.ApplyFragment"
         android:label="fragment_apply"
         tools:layout="@layout/fragment_apply" />
     <fragment
         android:id="@+id/mineFragment"
-        android:name="com.fx.mvvm.fragments.MineFragment"
+        android:name="com.fx.mvvm.ui.main.MineFragment"
         android:label="fragment_mine"
         tools:layout="@layout/fragment_mine" />
 </navigation>

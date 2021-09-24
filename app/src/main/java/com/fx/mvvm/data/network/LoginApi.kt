@@ -1,6 +1,6 @@
-package com.fx.mvvm.network
+package com.fx.mvvm.data.network
 
-import com.fx.mvvm.responses.BaseResponse
+import com.fx.mvvm.data.responses.BaseResponse
 import retrofit2.http.POST
 import retrofit2.http.Query
 
@@ -13,7 +13,7 @@ import retrofit2.http.Query
  * @Description : Api
 
  */
-interface Api {
+interface LoginApi {
 
     @POST(Url.CHECK_USER)
     suspend fun checkUser(@Query("sfzh") sfzh: String): BaseResponse

@@ -1,4 +1,4 @@
-package com.fx.mvvm.network
+package com.fx.mvvm.data.network
 
 import com.fx.mvvm.BuildConfig
 import okhttp3.OkHttpClient

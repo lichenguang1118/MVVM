@@ -1,6 +1,6 @@
-package com.fx.mvvm.repository
+package com.fx.mvvm.data.repository
 
-import com.fx.mvvm.network.Resource
+import com.fx.mvvm.data.network.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException

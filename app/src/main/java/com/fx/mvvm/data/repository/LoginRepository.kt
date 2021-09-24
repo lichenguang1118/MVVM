@@ -1,6 +1,6 @@
-package com.fx.mvvm.repository
+package com.fx.mvvm.data.repository
 
-import com.fx.mvvm.network.Api
+import com.fx.mvvm.data.network.LoginApi
 
 /**
 
@@ -12,7 +12,7 @@ import com.fx.mvvm.network.Api
 
  */
 class LoginRepository(
-    private val api: Api
+    private val api: LoginApi
 ) : BaseRepository() {
 
     suspend fun checkUser(

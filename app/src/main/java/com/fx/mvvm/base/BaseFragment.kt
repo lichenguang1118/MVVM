@@ -65,12 +65,14 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment
         addListener()
     }
 
-    abstract fun addListener()
+    /**
+     * 初始化listener
+     */
+    protected open fun addListener() {}
 
 
     /**
      * 初始化观察者
      */
-    protected open fun initObserve() {
-    }
+    protected open fun initObserve() {}
 }

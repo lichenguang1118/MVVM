@@ -1,8 +1,7 @@
-package com.fx.mvvm.application
+package com.fx.mvvm
 
 import android.app.Application
 import com.fx.common.util.LogUtil
-import com.fx.mvvm.BuildConfig
 
 /**
 
@@ -13,7 +12,7 @@ import com.fx.mvvm.BuildConfig
  * @Description : BaseApplication
 
  */
-class BaseApplication : Application() {
+class MyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()

@@ -1,4 +1,4 @@
-package com.fx.mvvm.fragments
+package com.fx.mvvm.ui
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -23,8 +23,7 @@ class SplashFragment : BaseFragment<SplashFragmentViewModel, FragmentSplashBindi
 
     override val layoutResId: Int = R.layout.fragment_splash
 
-    override fun onResume() {
-        super.onResume()
+    override fun initObserve() {
         lifecycleScope.launchWhenResumed {
             delay(2000L)
             Navigation.findNavController(binding.root).navigate(R.id.action_splashFragment_to_loginFragment)
