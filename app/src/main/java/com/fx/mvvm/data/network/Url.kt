@@ -16,4 +16,10 @@ object Url {
 
     //获取用户token
     const val GET_USER_TOKEN = "/zjyzjt/infoPerson/getUserToken.do"
+
+    //获取用户信息
+    const val GET_USER_INFO = "/zjyzjt/homePage/getUserInfo.do"
+
+    //获取首页banner列表
+    const val GET_BANNER_LIST = "/zjyzjt/homePage/getBannerList.do"
 }

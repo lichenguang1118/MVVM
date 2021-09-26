@@ -82,4 +82,6 @@ dependencies {
     //Banner
     implementation 'io.github.youth5201314:banner:2.2.2'
 
+    //Coil图片加载
+    implementation "io.coil-kt:coil:1.3.2"
 }

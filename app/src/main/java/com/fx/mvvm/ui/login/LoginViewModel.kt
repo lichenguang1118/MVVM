@@ -28,11 +28,12 @@ class LoginViewModel @Inject constructor(
     private val repository: LoginRepository
 ) : BaseViewModel() {
 
-    private val _loginResponse: MutableLiveData<Resource<BaseResponse>> = MutableLiveData()
-    private val _userTokenResponse: MutableLiveData<Resource<TokenResponse>> = MutableLiveData()
-    val loginResponse: LiveData<Resource<BaseResponse>> = _loginResponse
-    val userTokenResponse: LiveData<Resource<TokenResponse>> = _userTokenResponse
+    private val _loginResponse: MutableLiveData<Resource<BaseResponse<Boolean>>> = MutableLiveData()
+    private val _userTokenResponse: MutableLiveData<Resource<BaseResponse<TokenResponse>>> = MutableLiveData()
+    val loginResponse: LiveData<Resource<BaseResponse<Boolean>>> = _loginResponse
+    val userTokenResponse: LiveData<Resource<BaseResponse<TokenResponse>>> = _userTokenResponse
 
+    //129292199202012332
     val idNumber: MutableLiveData<String> = MutableLiveData("")
 
     val valid: MutableLiveData<Boolean> = MutableLiveData(false)

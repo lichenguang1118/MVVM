@@ -1,7 +1,9 @@
 package com.fx.mvvm.di
 
+import com.fx.mvvm.data.network.HomeApi
 import com.fx.mvvm.data.network.LoginApi
 import com.fx.mvvm.data.network.RemoteDataSource
+import com.fx.mvvm.data.repository.HomeRepository
 import com.fx.mvvm.data.repository.LoginRepository
 import dagger.Module
 import dagger.Provides
@@ -37,5 +39,16 @@ object AppModule {
     @Provides
     fun provideLoginApi(remoteDataSource: RemoteDataSource):LoginApi{
         return remoteDataSource.buildApi(LoginApi::class.java)
+    }
+
+    @Provides
+    fun provideHomeRepository(homeApi: HomeApi): HomeRepository {
+        return HomeRepository(homeApi)
+    }
+
+    @Singleton
+    @Provides
+    fun provideHomeApi(remoteDataSource: RemoteDataSource):HomeApi{
+        return remoteDataSource.buildApi(HomeApi::class.java)
     }
 }

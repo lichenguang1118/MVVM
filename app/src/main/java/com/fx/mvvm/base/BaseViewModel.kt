@@ -1,7 +1,9 @@
 package com.fx.mvvm.base
 
 import androidx.lifecycle.ViewModel
+import com.fx.mvvm.constants.SpConstants
 import com.fx.mvvm.util.LogUtil
+import com.fx.mvvm.util.SpUtil
 import com.google.gson.Gson
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
@@ -28,6 +30,13 @@ abstract class BaseViewModel : ViewModel(){
 
         fun createJSONObject() : JSONObject{
             return JSONObject()
+        }
+
+        fun createRequestParames() : JSONObject{
+            return JSONObject().apply {
+                put(SpConstants.TOKEN,SpUtil.getString(SpConstants.TOKEN))
+                put(SpConstants.SIPID,SpUtil.getString(SpConstants.TOKEN))
+            }
         }
     }
 

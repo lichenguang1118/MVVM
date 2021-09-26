@@ -37,7 +37,7 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
             loginResponse.observe(this@LoginFragment, {
                 when (it) {
                     is Resource.Success -> {
-                        if (it.value.data == true) {
+                        if (it.value.data) {
                             viewModel.getUserToken()
                         } else {
                             Toast.makeText(
@@ -62,6 +62,7 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
                     is Resource.Success -> {
                         if (it.value.code == NetWordConfig.REQUEST_SUCCESS) {
                             SpUtil.put(SpConstants.TOKEN, it.value.data.token)
+                            SpUtil.put(SpConstants.SIPID,it.value.data.sipId)
                             Navigation.findNavController(binding.root)
                                 .navigate(R.id.action_loginFragment_to_mainFragment)
                         } else {

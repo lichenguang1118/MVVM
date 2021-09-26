@@ -13,4 +13,6 @@ object SpConstants {
 
     const val TOKEN :String = "token"
 
+    const val SIPID :String = "sipId"
+
 }

@@ -9,8 +9,8 @@ package com.fx.mvvm.data.responses
  * @Description : BaseResponse
 
  */
-data class BaseResponse(
+data class  BaseResponse <T>(
     val code: Int,
     val msg: String,
-    val data: Any
+    val data: T
 )

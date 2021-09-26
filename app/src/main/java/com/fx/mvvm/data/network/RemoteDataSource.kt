@@ -1,6 +1,8 @@
 package com.fx.mvvm.data.network
 
 import com.fx.mvvm.BuildConfig
+import com.fx.mvvm.constants.SpConstants
+import com.fx.mvvm.util.SpUtil
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -16,25 +18,33 @@ import javax.inject.Inject
  * @Description : RemoteDataSource
 
  */
-class RemoteDataSource @Inject constructor(){
+class RemoteDataSource @Inject constructor() {
 
-    companion object{
+    companion object {
         private const val BASE_URL = "http://dev.hijz.faxuanyun.com"
     }
 
     fun <Api> buildApi(
-        api : Class<Api>
-    ) :Api {
+        api: Class<Api>
+    ): Api {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(
-                OkHttpClient.Builder().also { client ->
-                    if (BuildConfig.DEBUG) {
-                        val logging = HttpLoggingInterceptor()
-                        logging.setLevel(HttpLoggingInterceptor.Level.BODY)
-                        client.addInterceptor(logging)
+                OkHttpClient.Builder()
+                    .addInterceptor { chain ->
+                        chain.proceed(chain.request().newBuilder().also {
+                            SpUtil.getString(SpConstants.TOKEN)?.let { token ->
+                                it.addHeader("token", token)
+                            }
+                        }.build())
                     }
-                }.build()
+                    .also { client ->
+                        if (BuildConfig.DEBUG) {
+                            val logging = HttpLoggingInterceptor()
+                            logging.setLevel(HttpLoggingInterceptor.Level.BODY)
+                            client.addInterceptor(logging)
+                        }
+                    }.build()
             )
             .addConverterFactory(GsonConverterFactory.create())
             .build()

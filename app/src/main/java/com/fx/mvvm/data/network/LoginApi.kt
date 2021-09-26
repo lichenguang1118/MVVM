@@ -19,9 +19,9 @@ import retrofit2.http.Query
 interface LoginApi {
 
     @POST(Url.CHECK_USER)
-    suspend fun checkUser(@Query("sfzh") sfzh: String): BaseResponse
+    suspend fun checkUser(@Query("sfzh") sfzh: String): BaseResponse<Boolean>
 
     @POST(Url.GET_USER_TOKEN)
-    suspend fun getUserToken(@Body body: RequestBody) :TokenResponse
+    suspend fun getUserToken(@Body body: RequestBody) :BaseResponse<TokenResponse>
 
 }
