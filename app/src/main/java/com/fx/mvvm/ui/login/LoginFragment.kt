@@ -41,6 +41,7 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
                         if (it.value.data) {
                             viewModel.getUserToken()
                         } else {
+                            viewModel.showProgressBar.postValue(false)
                             Toast.makeText(
                                 requireContext(),
                                 getString(R.string.invalid_id_number),
