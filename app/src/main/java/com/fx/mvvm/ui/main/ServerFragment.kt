@@ -7,11 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.fx.mvvm.R
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ServerFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ServerFragment : Fragment() {
 
     override fun onCreateView(

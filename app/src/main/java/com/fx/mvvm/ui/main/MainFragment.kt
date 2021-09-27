@@ -14,11 +14,6 @@ import com.fx.mvvm.databinding.FragmentMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MainFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MainFragment : Fragment() {
 
     lateinit var binding: FragmentMainBinding

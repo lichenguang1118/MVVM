@@ -14,12 +14,6 @@ import com.fx.mvvm.util.SpUtil
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SplashFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SplashFragment : BaseFragment<SplashFragmentViewModel, FragmentSplashBinding>() {
 
     override val viewModel: SplashFragmentViewModel by viewModels()

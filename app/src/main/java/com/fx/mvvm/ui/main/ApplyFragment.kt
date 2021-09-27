@@ -8,11 +8,6 @@ import android.view.ViewGroup
 import com.fx.mvvm.R
 
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ApplyFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ApplyFragment : Fragment() {
 
 
