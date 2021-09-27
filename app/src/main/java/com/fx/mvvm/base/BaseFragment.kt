@@ -46,8 +46,6 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment
         // 保存当前 Context 对象
         mContext = requireActivity()
 
-        requireActivity().window.statusBarColor = ContextCompat.getColor(requireActivity(),R.color.app_color)
-
         // 初始化观察者
         initObserve()
     }
