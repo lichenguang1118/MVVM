@@ -2,7 +2,7 @@ package com.fx.mvvm.data.network
 
 import com.fx.mvvm.data.responses.BannerResponse
 import com.fx.mvvm.data.responses.BaseResponse
-import com.fx.mvvm.data.responses.TokenResponse
+import com.fx.mvvm.data.responses.CallPoliceResponse
 import com.fx.mvvm.data.responses.UserInfoResponse
 import okhttp3.RequestBody
 import retrofit2.http.Body
@@ -25,4 +25,6 @@ interface HomeApi {
     @POST(Url.GET_BANNER_LIST)
     suspend fun getBannerList(@Body body: RequestBody): BaseResponse<List<BannerResponse>>
 
+    @POST(Url.GET_CALL_POLICE)
+    suspend fun getPageCallPolice(@Body body: RequestBody): BaseResponse<List<CallPoliceResponse>>
 }

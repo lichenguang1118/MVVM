@@ -1,15 +1,17 @@
 package com.fx.mvvm.ui.main.home
 
 import android.animation.ValueAnimator
+import android.view.View
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.fx.mvvm.R
 import com.fx.mvvm.base.BaseFragment
+import com.fx.mvvm.constants.NetWordConfig
 import com.fx.mvvm.data.network.Resource
 import com.fx.mvvm.data.responses.BannerResponse
+import com.fx.mvvm.data.responses.CallPoliceResponse
 import com.fx.mvvm.databinding.FragmentHomeBinding
 import com.youth.banner.adapter.BannerImageAdapter
 import com.youth.banner.holder.BannerImageHolder
@@ -23,11 +25,17 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
 
     override val viewModel: HomeViewModel by viewModels()
 
+    private var callPoliceAdapter: CallPoliceAdapter = CallPoliceAdapter()
+
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
         if (!hidden) {
             viewModel.updateHomeView()
         }
+    }
+
+    override fun initView() {
+        binding.recyclerMainWarn.adapter = callPoliceAdapter
     }
 
     override fun initObserve() {
@@ -89,6 +97,25 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
                 is Resource.Failure -> {
                     Toast.makeText(requireContext(), R.string.get_banner_fail, Toast.LENGTH_SHORT)
                         .show()
+                }
+            }
+        })
+
+        viewModel.callPoliceList.observe(this, {
+            when (it) {
+                is Resource.Success -> {
+                    if (it.value.code == NetWordConfig.REQUEST_SUCCESS) {
+                        val list: List<CallPoliceResponse> = it.value.data
+                        if (list.isNotEmpty()) {
+                            binding.viewExcellent.visibility = View.GONE
+                            callPoliceAdapter.update(list)
+                        } else {
+                            binding.viewExcellent.visibility = View.VISIBLE
+                        }
+                    }
+                }
+                else -> {
+
                 }
             }
         })

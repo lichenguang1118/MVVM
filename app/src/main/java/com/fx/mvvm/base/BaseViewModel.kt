@@ -4,12 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.fx.mvvm.constants.SpConstants
 import com.fx.mvvm.util.LogUtil
 import com.fx.mvvm.util.SpUtil
-import com.google.gson.Gson
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.RequestBody
 import org.json.JSONObject
-import java.util.*
-import kotlin.collections.HashMap
 
 /**
 
@@ -34,8 +29,8 @@ abstract class BaseViewModel : ViewModel(){
 
         fun createRequestParames() : JSONObject{
             return JSONObject().apply {
-                put(SpConstants.TOKEN,SpUtil.getString(SpConstants.TOKEN))
-                put(SpConstants.SIPID,SpUtil.getString(SpConstants.TOKEN))
+                put(SpConstants.TOKEN, SpUtil.getString(SpConstants.TOKEN))
+                put(SpConstants.SIPID, SpUtil.getString(SpConstants.SIPID))
             }
         }
     }
