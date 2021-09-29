@@ -1,6 +1,7 @@
 package com.fx.mvvm.ui.main.home
 
 import android.animation.ValueAnimator
+import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -39,13 +40,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
 
     private lateinit var navHostFragment: NavHostFragment
 
-    override fun onHiddenChanged(hidden: Boolean) {
-        super.onHiddenChanged(hidden)
-        if (!hidden) {
-            viewModel.updateHomeView()
-        }
-    }
-
     override fun initView() {
         binding.recyclerMainWarn.adapter = callPoliceAdapter
 
@@ -57,7 +51,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
     }
 
     override fun initObserve() {
-        super.initObserve()
         viewModel.userInfo.observe(this, {
             when (it) {
                 is Resource.Success -> {
@@ -113,7 +106,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
                             }
                         }
                     }).also { banner ->
-                        banner.addBannerLifecycleObserver(this@HomeFragment)
+                        banner.addBannerLifecycleObserver(viewLifecycleOwner)
                         banner.indicator = CircleIndicator(requireContext())
                     }
                 }
@@ -190,18 +183,14 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
 
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.e(TAG, "onDestroy: ")
+    override fun onStart() {
+        super.onStart()
+        viewModel.updateHomeUI()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        Log.e(TAG, "onDestroyView: ")
-    }
 
-    override fun onPause() {
-        super.onPause()
-        Log.e(TAG, "onPause: ")
-    }
+
+
+
+
 }

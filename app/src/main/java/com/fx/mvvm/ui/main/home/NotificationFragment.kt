@@ -38,10 +38,10 @@ class NotificationFragment : BaseFragment<NotificationViewModel, FragmentNotific
 
                 override fun createFragment(position: Int): Fragment {
                     val fragment = MessageFragment()
-                    val bundle = Bundle()
-                    bundle.putInt("type", 2 - position)
-                    bundle.putInt("parentType", args.type)
-                    fragment.arguments = bundle
+                    fragment.arguments = Bundle().apply {
+                        putInt("type", 2 - position)
+                        putInt("parentType", args.type)
+                    }
                     return fragment
                 }
             }

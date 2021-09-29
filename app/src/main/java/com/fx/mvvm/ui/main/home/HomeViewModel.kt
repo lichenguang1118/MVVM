@@ -52,11 +52,8 @@ class HomeViewModel @Inject constructor(
     val notificationList: LiveData<Resource<BaseResponse<List<NotificationResponse>>>> =
         _notificationList
 
-    init {
-        updateHomeView()
-    }
 
-    fun updateHomeView() = viewModelScope.launch {
+    fun updateHomeUI() = viewModelScope.launch {
         requestBody1 = createRequestParames().toString()
             .toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull())
 

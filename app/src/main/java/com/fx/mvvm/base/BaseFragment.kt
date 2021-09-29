@@ -53,16 +53,11 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment
         // 初始化 DataBinding
         binding = DataBindingUtil.inflate(inflater, layoutResId, container, false)
         // 绑定生命周期管理
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
         // 绑定 ViewModel
         binding.setVariable(BR.viewModel, viewModel)
-
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         initView()
+        return binding.root
     }
 
     override fun onResume() {
