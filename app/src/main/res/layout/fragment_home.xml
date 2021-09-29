@@ -195,7 +195,6 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recycler_main_warn"
                         android:layout_width="match_parent"
-
                         android:layout_height="match_parent"
                         android:nestedScrollingEnabled="false"
                         android:padding="@dimen/dp_12"
@@ -280,6 +279,7 @@
                     android:layout_height="wrap_content"
                     android:minHeight="@dimen/dp_150"
                     android:padding="@dimen/dp_12"
+                    android:nestedScrollingEnabled="false"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:itemCount="6"
                     tools:listitem="@layout/item_main_notification" />

@@ -6,10 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.fx.mvvm.base.BaseViewModel
 import com.fx.mvvm.data.network.Resource
 import com.fx.mvvm.data.repository.HomeRepository
-import com.fx.mvvm.data.responses.BannerResponse
-import com.fx.mvvm.data.responses.BaseResponse
-import com.fx.mvvm.data.responses.CallPoliceResponse
-import com.fx.mvvm.data.responses.UserInfoResponse
+import com.fx.mvvm.data.responses.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -49,6 +46,12 @@ class HomeViewModel @Inject constructor(
 
     val callPoliceList: LiveData<Resource<BaseResponse<List<CallPoliceResponse>>>> = _callPoliceList
 
+    private val _notificationList: MutableLiveData<Resource<BaseResponse<List<NotificationResponse>>>> =
+        MutableLiveData()
+
+    val notificationList: LiveData<Resource<BaseResponse<List<NotificationResponse>>>> =
+        _notificationList
+
     init {
         updateHomeView()
     }
@@ -56,13 +59,17 @@ class HomeViewModel @Inject constructor(
     fun updateHomeView() = viewModelScope.launch {
         requestBody1 = createRequestParames().toString()
             .toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull())
+
         _userInfo.value = repository.getUserInfo(requestBody1)
         _bannerList.value = repository.getBannerList(requestBody1)
+
         requestBody2 =
             createRequestParames().put("page", 1).put("rows", 6).put("type", 1).toString()
                 .toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull())
 
         _callPoliceList.value = repository.getPageCallPolice(requestBody2)
+
+        _notificationList.value = repository.getPageMessage(requestBody2)
     }
 
 }

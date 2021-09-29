@@ -25,4 +25,7 @@ class HomeRepository @Inject constructor(
 
     suspend fun getPageCallPolice(requestBody: RequestBody) =
         safeApiCall { api.getPageCallPolice(requestBody) }
+
+    suspend fun getPageMessage(requestBody: RequestBody) =
+        safeApiCall { api.getPageMessage(requestBody) }
 }

@@ -34,6 +34,29 @@ class CallPoliceAdapter : RecyclerView.Adapter<CallPoliceAdapter.MyViewHolder>()
     @SuppressLint("SimpleDateFormat")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val item = data[position]
+        when (item.bjzt) {
+            1 -> {
+                item.content = "报警一次，报警原因：无信号报警"
+            }
+            2 -> {
+                item.content = "报警一次，报警原因：禁出越界报警"
+            }
+            3 -> {
+                item.content = "报警一次，报警原因：禁入越界报警"
+            }
+            8 -> {
+                item.content = "报警一次，报警原因：人机分离报警"
+            }
+            16 -> {
+                item.content = "报警一次，报警原因：手环拆卸报警"
+            }
+            32 -> {
+                item.content = "报警一次，报警原因：低电报警"
+            }
+            else -> {
+                item.content = "报警一次，报警原因：无"
+            }
+        }
         item.timeString = DateUtil.convertTimeStamp(item.bjTime)
         holder.bind(item)
     }

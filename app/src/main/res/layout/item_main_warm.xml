@@ -37,6 +37,7 @@
             android:maxLines="1"
             android:textColor="@color/color_0D2E57"
             android:textSize="@dimen/sp_14"
+            android:text="@{item.content}"
             tools:text="报警一次，报警原因：越界越界越界越界越界越界越界越界越界" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

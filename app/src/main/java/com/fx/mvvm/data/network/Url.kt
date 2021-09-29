@@ -25,4 +25,8 @@ object Url {
 
     //查询报警信息接口
     const val GET_CALL_POLICE = "/zjyzjt/homePage/getPageCallPolice.do"
+
+    //分页消息通知接口
+    const val GET_PAGE_MESSAGE = "/zjyzjt/homePage/getPageMessage.do"
+
 }
