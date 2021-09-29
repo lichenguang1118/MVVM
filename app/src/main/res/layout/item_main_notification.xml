@@ -1,18 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginBottom="@dimen/dp_15"
-    android:layout_height="wrap_content">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/tv_main_notification"
-        android:layout_width="wrap_content"
+    <data>
+
+        <variable
+            name="item"
+            type="com.fx.mvvm.data.responses.NotificationResponse" />
+
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/sp_15"
-        android:textColor="@color/color_0D2E57"
-        android:maxLines="1"
-        android:ellipsize="end"
-        tools:text="未读消息未读消息未读消息未读消息未读消息未读消息未读消息读消息未读消息未读"/>
+        android:layout_marginBottom="@dimen/dp_15">
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+        <TextView
+            android:id="@+id/tv_main_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{item.title}"
+            android:textColor="@color/color_0D2E57"
+            android:textSize="@dimen/sp_15"
+            tools:text="未读消息未读消息未读消息未读消息未读消息未读消息未读消息读消息未读消息未读" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

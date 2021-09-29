@@ -240,4 +240,5 @@
     <string name="delay_continue">稍后更新</string>
     <string name="downloading">正在下载</string>
     <string name="invalid_id_number">该身份证未在后台录入</string>
+    <string name="formatter_time">%1$tH:%1$tM</string>
 </resources>

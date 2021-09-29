@@ -10,7 +10,13 @@
         <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">@color/white</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/app_color</item>
         <!-- Customize your theme here. -->
+    </style>
+
+    <style name="MySplashTheme" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_logo_zqt</item>
+        <item name="postSplashScreenTheme">@style/Theme.MVVM</item>
     </style>
 </resources>

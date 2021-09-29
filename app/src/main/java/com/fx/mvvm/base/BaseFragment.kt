@@ -1,20 +1,14 @@
 package com.fx.mvvm.base
 
-import android.content.res.Resources
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.ThemeUtils
-import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.fx.mvvm.BR
-import com.fx.mvvm.R
-import com.fx.mvvm.ui.splash.SplashFragment
 
 
 /**
@@ -46,8 +40,6 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment
         // 保存当前 Context 对象
         mContext = requireActivity()
 
-        requireActivity().window.statusBarColor = ContextCompat.getColor(requireActivity(),R.color.app_color)
-
         // 初始化观察者
         initObserve()
     }
@@ -68,6 +60,11 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initView()
+    }
+
     override fun onResume() {
         super.onResume()
         addListener()
@@ -78,14 +75,16 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment
         binding.unbind()
     }
 
-    /**
-     * 初始化listener
-     */
-    protected open fun addListener() {}
-
+    protected open fun initView() {}
 
     /**
      * 初始化观察者
      */
     protected open fun initObserve() {}
+
+    /**
+     * 初始化listener
+     */
+    protected open fun addListener() {}
+
 }

@@ -1,7 +1,6 @@
 package com.fx.mvvm.util
 
 import android.view.View
-import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 
 /**
@@ -16,10 +15,11 @@ import androidx.databinding.BindingAdapter
 object BindingAdapters {
 
     @BindingAdapter("android:showOrHide")
-    @JvmStatic fun showOrHide(view: View, showOrHide: Boolean) {
+    @JvmStatic
+    fun showOrHide(view: View, showOrHide: Boolean) {
         if (showOrHide) {
             view.visibility = View.VISIBLE
-        }else{
+        } else {
             view.visibility = View.GONE
         }
     }

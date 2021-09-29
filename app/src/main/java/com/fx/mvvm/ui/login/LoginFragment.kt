@@ -1,6 +1,8 @@
 package com.fx.mvvm.ui.login
 
+import android.os.Bundle
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.fx.mvvm.R
@@ -13,15 +15,18 @@ import com.fx.mvvm.util.SpUtil
 import com.fx.mvvm.util.StringUtil
 import dagger.hilt.android.AndroidEntryPoint
 
-/**
- * LoginFragment
- */
 @AndroidEntryPoint
 class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
 
     override val viewModel: LoginViewModel by viewModels()
 
     override val layoutResId: Int = R.layout.fragment_login
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requireActivity().window.statusBarColor =
+            ContextCompat.getColor(requireActivity(), R.color.app_color)
+    }
 
     override fun initObserve() {
 
