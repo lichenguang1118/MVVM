@@ -33,14 +33,13 @@ class LoginViewModel @Inject constructor(
     val loginResponse: LiveData<Resource<BaseResponse<Boolean>>> = _loginResponse
     val userTokenResponse: LiveData<Resource<BaseResponse<TokenResponse>>> = _userTokenResponse
 
-    //129292199202012332
     val idNumber: MutableLiveData<String> = MutableLiveData("")
 
     val valid: MutableLiveData<Boolean> = MutableLiveData(false)
 
     val showProgressBar: MutableLiveData<Boolean> = MutableLiveData(false)
 
-    fun login() {
+    fun checkUser() {
         showProgressBar.value = true
         viewModelScope.launch {
             _loginResponse.value = repository.checkUser(idNumber.value.toString())

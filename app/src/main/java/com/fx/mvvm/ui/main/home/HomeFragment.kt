@@ -1,7 +1,6 @@
 package com.fx.mvvm.ui.main.home
 
 import android.animation.ValueAnimator
-import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -179,18 +178,12 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
             )
             navHostFragment.findNavController().navigate(action)
         }
-
-
     }
 
     override fun onStart() {
         super.onStart()
         viewModel.updateHomeUI()
+        Log.e(TAG, "onStart: ")
     }
-
-
-
-
-
 
 }

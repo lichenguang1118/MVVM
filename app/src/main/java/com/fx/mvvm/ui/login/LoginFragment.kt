@@ -86,7 +86,7 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
 
     override fun addListener() {
         binding.ivFaceAuthentication.setOnClickListener {
-            viewModel.login()
+            viewModel.checkUser()
         }
     }
 
